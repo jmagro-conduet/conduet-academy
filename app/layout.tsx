@@ -4,6 +4,9 @@ import { AuthProvider } from '@/components/auth/AuthProvider'
 import { Nav } from '@/components/ui/Nav'
 import { Footer } from '@/components/ui/Footer'
 
+// All pages are auth-aware and personalized — never prerender at build time
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Conduet Academy',
   description: 'Your AI training hub. Level up, session by session.',
