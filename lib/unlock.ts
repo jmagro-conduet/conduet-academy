@@ -13,7 +13,7 @@ export async function getUnlockedSessions(userId: string): Promise<string[]> {
     .from('user_sessions')
     .select('session_id')
     .eq('user_id', userId)
-  return data?.map((r) => r.session_id) ?? ['101']
+  return data?.map((r) => r.session_id) ?? []
 }
 
 export async function unlockSession(

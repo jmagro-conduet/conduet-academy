@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .from('user_sessions')
       .select('session_id')
       .eq('user_id', userId)
-    setUnlockedSessions(data?.map((r) => r.session_id) ?? ['101'])
+    setUnlockedSessions(data?.map((r) => r.session_id) ?? [])
   }
 
   const refreshUnlockedSessions = async () => {

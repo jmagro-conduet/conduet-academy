@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import { PromptCard } from '@/components/academy/PromptCard'
+import { useAuth } from '@/components/auth/AuthProvider'
+import { UnlockModal } from '@/components/academy/UnlockModal'
+import { sessions } from '@/lib/content/shared'
 import {
   fieldGuide101,
   prompts101,
@@ -11,6 +14,7 @@ import {
 } from '@/lib/content/session-101'
 
 const COLOUR = '#CEA4FF'
+const SESSION_DATA = sessions.find((s) => s.id === '101')!
 const TABS = [
   { id: 'field-guide', label: 'Field guide' },
   { id: 'prompts', label: 'Prompts' },
@@ -20,7 +24,66 @@ const TABS = [
 ]
 
 export default function Session101Page() {
+  const { unlockedSessions, loading, refreshUnlockedSessions } = useAuth()
   const [activeTab, setActiveTab] = useState('field-guide')
+  const [showModal, setShowModal] = useState(false)
+
+  const unlocked = !loading && unlockedSessions.includes('101')
+
+  if (!loading && !unlocked) {
+    return (
+      <>
+        <div style={{ background: '#111111', padding: '80px 24px', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ maxWidth: 480, textAlign: 'center' }}>
+            <div style={{
+              width: 56,
+              height: 56,
+              borderRadius: '50%',
+              background: 'rgba(206,164,255,0.12)',
+              border: '0.5px solid rgba(206,164,255,0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 24px',
+            }}>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style={{ color: COLOUR }}>
+                <path d="M7 11V8a4 4 0 018 0v3M5 11h12a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <h1 style={{ fontSize: 24, fontWeight: 500, color: '#F1F1F2', margin: '0 0 12px' }}>
+              101 — Crawl is locked
+            </h1>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', margin: '0 0 28px', lineHeight: 1.7 }}>
+              Attend the 101 Crawl session to unlock this content. You&apos;ll receive a code on the closing slide.
+            </p>
+            <button
+              onClick={() => setShowModal(true)}
+              style={{
+                padding: '11px 28px',
+                background: COLOUR,
+                color: '#111111',
+                border: 'none',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: 500,
+                fontFamily: 'Inter, sans-serif',
+                cursor: 'pointer',
+              }}
+            >
+              Enter unlock code
+            </button>
+          </div>
+        </div>
+        {showModal && (
+          <UnlockModal
+            session={SESSION_DATA}
+            onClose={() => setShowModal(false)}
+            onUnlocked={async () => { await refreshUnlockedSessions() }}
+          />
+        )}
+      </>
+    )
+  }
 
   return (
     <div>

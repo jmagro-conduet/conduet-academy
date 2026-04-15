@@ -134,7 +134,7 @@ export default function Home() {
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ marginBottom: 32, textAlign: 'center' }}>
             <h2 style={{ fontSize: 18, fontWeight: 500, color: '#111111', margin: '0 0 6px' }}>
-              The programme
+              The Program Overview
             </h2>
             <p style={{ fontSize: 14, color: '#6B6B6B', margin: 0 }}>
               Three sessions. Each one builds on the last.
