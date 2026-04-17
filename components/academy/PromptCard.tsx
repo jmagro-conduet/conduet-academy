@@ -19,6 +19,8 @@ type Props = {
   prompt: Prompt
   showSessionBadge?: boolean
   sessionColour?: string
+  initialSaved?: boolean
+  onSaveToggle?: (id: string, nowSaved: boolean) => void
 }
 
 const categoryColours: Record<string, string> = {
@@ -29,9 +31,9 @@ const categoryColours: Record<string, string> = {
   specialist: '#6B6B6B',
 }
 
-export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF' }: Props) {
+export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF', initialSaved = false, onSaveToggle }: Props) {
   const [copied, setCopied] = useState(false)
-  const [saved, setSaved] = useState(false)
+  const [saved, setSaved] = useState(initialSaved)
   const [saving, setSaving] = useState(false)
   const { user } = useAuth()
   const supabase = createClient()
@@ -42,14 +44,27 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const handleSave = async () => {
-    if (!user) return
+  const handleSaveToggle = async () => {
+    if (!user || saving) return
     setSaving(true)
-    await supabase.from('saved_prompts').upsert({
-      user_id: user.id,
-      prompt_id: prompt.id,
-    })
-    setSaved(true)
+    if (saved) {
+      // Unsave
+      await supabase
+        .from('saved_prompts')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('prompt_id', prompt.id)
+      setSaved(false)
+      onSaveToggle?.(prompt.id, false)
+    } else {
+      // Save
+      await supabase.from('saved_prompts').upsert({
+        user_id: user.id,
+        prompt_id: prompt.id,
+      })
+      setSaved(true)
+      onSaveToggle?.(prompt.id, true)
+    }
     setSaving(false)
   }
 
@@ -64,7 +79,6 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
       display: 'flex',
       flexDirection: 'column',
     }}>
-      {/* Left accent bar via top */}
       <div style={{ height: 4, background: catColour }} />
 
       <div style={{ padding: '16px 16px 14px' }}>
@@ -74,7 +88,6 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
             {prompt.title}
           </h4>
           <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
-            {/* Category badge */}
             <span style={{
               padding: '2px 8px',
               borderRadius: 100,
@@ -85,7 +98,6 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
             }}>
               {prompt.category}
             </span>
-            {/* Session badge */}
             {showSessionBadge && (
               <span style={{
                 padding: '2px 8px',
@@ -105,12 +117,10 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
           {prompt.description}
         </p>
 
-        {/* Prompt block */}
         <div className="prompt-block" style={{ marginBottom: 10 }}>
           {prompt.prompt}
         </div>
 
-        {/* Outcome */}
         <p style={{ fontSize: 12, color: catColour, margin: '0 0 12px', fontWeight: 500 }}>
           {prompt.outcome}
         </p>
@@ -155,8 +165,8 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
 
           {user && (
             <button
-              onClick={handleSave}
-              disabled={saved || saving}
+              onClick={handleSaveToggle}
+              disabled={saving}
               style={{
                 padding: '6px 12px',
                 fontSize: 12,
@@ -166,7 +176,7 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
                 color: saved ? catColour : '#6B6B6B',
                 border: `0.5px solid ${saved ? catColour : '#E4E4E5'}`,
                 borderRadius: 6,
-                cursor: saved ? 'default' : 'pointer',
+                cursor: saving ? 'default' : 'pointer',
                 transition: 'all 0.15s',
                 display: 'flex',
                 alignItems: 'center',
@@ -176,7 +186,7 @@ export function PromptCard({ prompt, showSessionBadge, sessionColour = '#CEA4FF'
               <svg width="12" height="12" viewBox="0 0 12 12" fill={saved ? 'currentColor' : 'none'}>
                 <path d="M6 1l1.545 3.13L11 4.635l-2.5 2.435.59 3.44L6 8.885l-3.09 1.625.59-3.44L1 4.635l3.455-.505L6 1z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
               </svg>
-              {saved ? 'Saved' : saving ? 'Saving…' : 'Save'}
+              {saving ? '…' : saved ? 'Saved' : 'Save'}
             </button>
           )}
         </div>

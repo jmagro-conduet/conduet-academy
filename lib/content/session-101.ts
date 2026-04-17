@@ -377,6 +377,271 @@ Before you start writing, ask me any clarifying questions you need to do this we
 List them all at once. Then wait for my answers before you begin.`,
     outcome: '→ No bad first drafts',
   },
+  {
+    id: 'p101-16',
+    title: 'Ops — Escalation matrix',
+    category: 'specialist',
+    role: 'ops',
+    session: '101',
+    description: 'Build a clear, tiered escalation matrix for any operational function.',
+    prompt: `You are a senior ops lead. Build an escalation matrix for our [function: e.g. operator support / compliance / technical incidents].
+
+Three tiers. For each tier include:
+- Trigger conditions (what makes something a Tier X issue)
+- Who gets notified and when
+- Response time target
+- Owner who resolves it
+- What "resolved" looks like
+
+Make it table format. Clear enough for a new hire to follow on day one.
+
+Context about our team: [describe team size, geography, hours of operation]`,
+    outcome: '→ Runnable escalation matrix',
+  },
+  {
+    id: 'p101-17',
+    title: 'Ops — Onboarding checklist',
+    category: 'specialist',
+    role: 'ops',
+    session: '101',
+    description: 'Generate a structured onboarding checklist for a new operator or team member.',
+    prompt: `You are a senior ops manager. Build a 30-60-90 day onboarding checklist for [a new operator / a new team member joining our ops function].
+
+For each phase:
+- Key milestones to hit
+- Systems and tools to get access to
+- People to meet and why
+- Documents to read
+- What "ready" looks like at the end of this phase
+
+What they are onboarding into: [describe role, team, product, or operator type]`,
+    outcome: '→ Structured 30-60-90 plan',
+  },
+  {
+    id: 'p101-18',
+    title: 'Ops — Incident runbook',
+    category: 'specialist',
+    role: 'ops',
+    session: '101',
+    description: 'Document a repeatable incident response process from detection to resolution.',
+    prompt: `Write an incident runbook for the following scenario:
+
+Incident type: [e.g. platform outage / data discrepancy / failed operator payout]
+
+Include:
+1. Detection — how we know this is happening
+2. Immediate response steps (first 15 minutes)
+3. Stakeholder communication (who to tell, in what order, what to say)
+4. Investigation steps
+5. Resolution criteria — how we know it's fixed
+6. Post-incident review checklist
+
+Write it so the on-call person can follow it at 2am without calling anyone.`,
+    outcome: '→ Ready-to-run incident playbook',
+  },
+  {
+    id: 'p101-19',
+    title: 'Meeting agenda builder',
+    category: 'productivity',
+    role: 'general',
+    session: '101',
+    description: 'Generate a tight, purposeful agenda from a rough set of topics.',
+    prompt: `Build a meeting agenda for a [type] meeting with [audience].
+
+Duration: [e.g. 45 minutes]
+Goal of this meeting: [what decision needs to be made or what outcome are we driving]
+Topics I want to cover: [list them roughly]
+
+Format each agenda item with: time allocation, owner, and whether it's a discussion, decision, or update.
+Add a 5-minute buffer at the end. Start with the most important item, not logistics.`,
+    outcome: '→ Purposeful agenda, no wasted time',
+  },
+  {
+    id: 'p101-20',
+    title: 'Weekly status report',
+    category: 'productivity',
+    role: 'general',
+    session: '101',
+    description: 'Draft your weekly status update in under a minute from bullet notes.',
+    prompt: `Turn these rough notes into a polished weekly status report:
+
+[paste your bullet notes from the week]
+
+Format:
+- Wins this week (2–3 bullets)
+- In progress (with % complete or next action)
+- Blockers (if any, with who owns the unblock)
+- Focus next week (top 3 priorities)
+
+Audience: [manager / leadership / team]. Tone: direct and factual. No padding.`,
+    outcome: '→ Status report in 60 seconds',
+  },
+  {
+    id: 'p101-21',
+    title: 'Rewrite for clarity',
+    category: 'communication',
+    role: 'general',
+    session: '101',
+    description: 'Take a dense or unclear piece of writing and make it instantly readable.',
+    prompt: `Rewrite the following for maximum clarity:
+
+[paste your text]
+
+Rules:
+- Cut it by at least 25%
+- Use plain English — no jargon
+- One idea per sentence
+- Active voice throughout
+- Keep all the meaning, lose all the noise`,
+    outcome: '→ Clear, tight writing in seconds',
+  },
+  {
+    id: 'p101-22',
+    title: 'Decision log entry',
+    category: 'productivity',
+    role: 'general',
+    session: '101',
+    description: 'Document a decision with full context, rationale, and alternatives considered.',
+    prompt: `Write a decision log entry for the following:
+
+Decision made: [what was decided]
+Date: [today's date]
+Decision maker(s): [names or roles]
+
+Fill in these fields:
+- Problem or question we were solving
+- Options we considered (at least 2)
+- Key factors in the decision
+- Risks we accepted
+- What would cause us to revisit this decision
+
+Write it so someone reading this in 6 months can understand why we did this without asking anyone.`,
+    outcome: '→ Permanent decision record',
+  },
+  {
+    id: 'p101-23',
+    title: 'Sales — Discovery call prep',
+    category: 'specialist',
+    role: 'sales',
+    session: '101',
+    description: 'Prepare strong discovery questions and a clear read of the prospect before any sales call.',
+    prompt: `I have a discovery call with [prospect name / role / company] tomorrow.
+
+Here is what I know about them: [paste LinkedIn, website, or notes]
+
+Prepare:
+1. Their most likely pain points (based on what you know about [their industry/role])
+2. Five high-quality discovery questions that surface whether we're a good fit
+3. The objection I'm most likely to hear and how to handle it
+4. The one thing I should not walk out of this call without learning
+
+What we sell: [brief description]`,
+    outcome: '→ Walk in with the right questions',
+  },
+  {
+    id: 'p101-24',
+    title: 'PM — Sprint retrospective',
+    category: 'specialist',
+    role: 'pm',
+    session: '101',
+    description: 'Synthesise raw retro notes into clear findings and actionable next steps.',
+    prompt: `Here are the raw notes from our sprint retrospective:
+
+[paste notes or Miro board output]
+
+Synthesise into:
+1. Top 3 things that went well (and why they worked)
+2. Top 3 things that didn't (root cause, not just symptoms)
+3. One process change to make in the next sprint
+4. Any themes that have shown up in more than one retro (flag these)
+
+Be direct. Avoid generic advice. If something is unclear in the notes, flag it as a question.`,
+    outcome: '→ Retro insights with real actions',
+  },
+  {
+    id: 'p101-25',
+    title: 'Vendor evaluation scorecard',
+    category: 'analysis',
+    role: 'ops',
+    session: '101',
+    description: 'Build a weighted scorecard to compare vendors objectively.',
+    prompt: `Build a weighted vendor evaluation scorecard for selecting a [type of vendor: e.g. payment provider / support tool / data warehouse].
+
+Include 8–10 evaluation criteria relevant to this vendor type. For each criterion:
+- Weight (1–5, where 5 = most critical to our decision)
+- Description of what "1 out of 5" vs "5 out of 5" looks like for this criterion
+- Where to find the information to score it
+
+Leave the vendor scores blank — I will fill those in.
+
+Our priorities for this decision: [describe what matters most — e.g. cost, compliance, speed of integration]`,
+    outcome: '→ Objective vendor comparison framework',
+  },
+  {
+    id: 'p101-26',
+    title: 'Extract action items from a meeting',
+    category: 'productivity',
+    role: 'general',
+    session: '101',
+    description: 'Turn messy meeting notes into a clean list of owners and deadlines.',
+    prompt: `Here are my notes from a meeting:
+
+[paste meeting notes or transcript]
+
+Extract all action items. For each one:
+- What needs to happen
+- Who owns it (name or role if mentioned)
+- Deadline (explicit if stated, or "TBD" if not)
+- Any dependency blocking it
+
+List them as a table. Flag any action items where the owner is unclear.`,
+    outcome: '→ Clean action list with owners',
+  },
+  {
+    id: 'p101-27',
+    title: 'Risk register entry',
+    category: 'analysis',
+    role: 'ops',
+    session: '101',
+    description: 'Document a risk with likelihood, impact, and a concrete mitigation plan.',
+    prompt: `Write a risk register entry for the following risk:
+
+Risk description: [describe the risk]
+Project or area it relates to: [context]
+
+Complete these fields:
+- Risk category (operational / financial / compliance / reputational / technical)
+- Likelihood (1–5 with brief rationale)
+- Impact if it materialises (1–5 with brief rationale)
+- Risk score (likelihood × impact)
+- Current mitigation in place (if any)
+- Proposed additional mitigation
+- Owner
+- Review date
+
+Be specific and honest — do not soften the impact assessment.`,
+    outcome: '→ Risk register-ready entry',
+  },
+  {
+    id: 'p101-28',
+    title: 'Summarise a Slack thread',
+    category: 'productivity',
+    role: 'general',
+    session: '101',
+    description: 'Extract decisions, open questions, and next steps from a messy Slack thread.',
+    prompt: `Here is a Slack thread:
+
+[paste the thread]
+
+Give me:
+1. What was decided (if anything)
+2. What is still unresolved or being debated
+3. Action items with owners (if named)
+4. One-sentence summary of the thread for someone who wasn't in it
+
+Flag anything that looks like it needs a decision from someone senior.`,
+    outcome: '→ Thread clarity in 10 seconds',
+  },
 ]
 
 // ─── Best Practices ───────────────────────────────────────────────────────────
@@ -415,6 +680,20 @@ Things I care about: [list your priorities].`,
     colour: '#FFCC50',
     actionTag: 'List top 5 time sinks → build a prompt for each',
     body: "Make a list of your 5 most time-consuming recurring tasks. That is your automation roadmap. Start with the one that costs you the most time per week. Build a saved prompt for it. Refine it once. Run it forever. Prompts are assets — treat them that way.",
+  },
+  {
+    number: 5,
+    title: 'Build a personal style file',
+    colour: '#008278',
+    actionTag: 'Create style.md → Add to CLAUDE.md or Project',
+    body: "Your CLAUDE.md covers your role and company. A personal style file covers how you communicate. Add a section — or a separate file — that captures your writing voice: preferred length, words you never use, phrases that are very you, level of formality. Paste in examples of your best writing. Claude will match your tone instead of producing generic professional text. The goal is output that sounds like you wrote it, not like it was AI-generated.",
+    template: `## My writing style
+Tone: [direct / warm / formal — pick one and describe it]
+Sentence length: [short and punchy / moderate / detailed]
+Things I never say: [list corporate jargon you hate]
+Words I use a lot: [optional — helps with voice matching]
+Example of writing I'm proud of:
+[paste 2–3 sentences or a short paragraph]`,
   },
 ]
 
