@@ -110,6 +110,7 @@ export const promptRoles = [
   { id: 'pm', label: 'PM' },
   { id: 'ops', label: 'Ops' },
   { id: 'sales', label: 'Sales' },
+  { id: 'marketing', label: 'Marketing' },
 ]
 
 export const glossary = [

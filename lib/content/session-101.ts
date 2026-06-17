@@ -642,6 +642,237 @@ Give me:
 Flag anything that looks like it needs a decision from someone senior.`,
     outcome: '→ Thread clarity in 10 seconds',
   },
+
+  // ── Marketing ─────────────────────────────────────────────────────────────
+  {
+    id: 'p101-29',
+    title: 'Marketing — Campaign brief',
+    category: 'specialist',
+    role: 'marketing',
+    session: '101',
+    description: 'Turn a rough campaign idea into a structured, actionable brief.',
+    prompt: `You are a senior marketing strategist. Turn this rough idea into a full campaign brief:
+
+Idea: [describe the campaign concept in a sentence or two]
+
+Build out:
+- Campaign name and one-line concept
+- Goal (what we want people to do or feel)
+- Target audience (who, specifically — not "everyone")
+- Key message (the single most important thing to communicate)
+- Channels (where this will run and why)
+- Tone and style
+- What success looks like (measurable if possible)
+- One risk or assumption we should validate before launching
+
+Keep it tight. One page maximum.`,
+    outcome: '→ Brief ready to share in minutes',
+  },
+  {
+    id: 'p101-30',
+    title: 'Marketing — Brand voice check',
+    category: 'communication',
+    role: 'marketing',
+    session: '101',
+    description: 'Check any piece of copy against your brand voice and get specific rewrites.',
+    prompt: `You are a brand editor. Review the copy below against our brand voice guidelines and rewrite anything that doesn't fit.
+
+Our brand voice: [describe — e.g. direct, confident, no jargon, human, never salesy]
+Things we never say: [list words or phrases to avoid]
+Things that are very us: [list phrases or patterns that are on-brand]
+
+Copy to review:
+[paste the copy]
+
+For each issue: quote the offending line, explain why it's off-brand, and give a rewrite.
+Then give me a final clean version at the end.`,
+    outcome: '→ On-brand copy, every time',
+  },
+  {
+    id: 'p101-31',
+    title: 'Marketing — Blog post draft',
+    category: 'communication',
+    role: 'marketing',
+    session: '101',
+    description: 'Draft a full blog post from a brief, bullet points, or a rough idea.',
+    prompt: `You are a senior content writer. Write a blog post based on the following:
+
+Topic or working title: [describe]
+Audience: [who will read this — role, seniority, what they care about]
+Goal of the post: [inform / persuade / build trust / drive action]
+Key points to cover: [list your main ideas or bullet notes]
+Tone: [e.g. authoritative but accessible, no jargon, first-person is fine]
+Length: [e.g. 600–800 words]
+
+Structure: Hook → Problem or context → Key insight or argument → Practical takeaway → Clear closing CTA.
+No filler. Every paragraph must earn its place.`,
+    outcome: '→ Publish-ready first draft',
+  },
+  {
+    id: 'p101-32',
+    title: 'Marketing — Email sequence',
+    category: 'communication',
+    role: 'marketing',
+    session: '101',
+    description: 'Write a multi-email nurture or onboarding sequence with a clear narrative arc.',
+    prompt: `You are an email marketing specialist. Write a [number]-email sequence for [purpose: e.g. new user onboarding / lead nurture / post-event follow-up].
+
+Audience: [describe who receives this]
+Goal of the sequence: [what should they do or believe by the end?]
+Tone: [e.g. warm, direct, no corporate speak]
+
+For each email:
+- Subject line (and one A/B variant)
+- Preview text
+- Body copy (under 200 words per email)
+- One clear CTA
+
+Space them: [e.g. Day 0, Day 2, Day 5, Day 10]. Each email should feel like a natural next step, not a standalone blast.`,
+    outcome: '→ Sequence ready to load into your email tool',
+  },
+  {
+    id: 'p101-33',
+    title: 'Marketing — Social media calendar',
+    category: 'productivity',
+    role: 'marketing',
+    session: '101',
+    description: 'Generate a week of social posts from a single theme or campaign.',
+    prompt: `You are a social media strategist. Generate a week of posts for [LinkedIn / Twitter-X / Instagram] based on this theme or campaign:
+
+Theme or campaign: [describe]
+Brand voice: [direct / warm / educational / provocative — pick one and describe it]
+Audience: [who follows us and what they care about]
+
+For each day (Mon–Fri):
+- Platform-native format (LinkedIn long-form / Twitter thread / Instagram caption)
+- Hook line (the first sentence — must stop the scroll)
+- Body copy
+- CTA or closing line
+- Suggested visual description (what the image or graphic should show)
+
+No hashtag spam. Every post should work without the visual.`,
+    outcome: '→ A week of content in under 5 minutes',
+  },
+  {
+    id: 'p101-34',
+    title: 'Marketing — Competitor content analysis',
+    category: 'research',
+    role: 'marketing',
+    session: '101',
+    description: 'Analyse competitor messaging and surface gaps you can own.',
+    prompt: `You are a competitive marketing analyst. Analyse the content and messaging of the following competitors:
+
+Competitors: [list them]
+Here is what I have gathered from their websites, socials, and recent content:
+[paste or describe what you found]
+
+Tell me:
+1. What message or position each competitor owns
+2. The language and tone patterns they repeat (quote examples)
+3. Topics they consistently avoid or underserve
+4. Where they are all saying the same thing (the gap we could own)
+5. One angle we could credibly take that none of them are using
+
+Be specific. Name the pattern, quote the evidence.`,
+    outcome: '→ Clear view of the competitive content landscape',
+  },
+  {
+    id: 'p101-35',
+    title: 'Marketing — Repurpose one asset',
+    category: 'productivity',
+    role: 'marketing',
+    session: '101',
+    description: 'Turn a single piece of content into multiple formats without losing the core message.',
+    prompt: `You are a content strategist. I have one piece of content I want to repurpose across formats.
+
+Original content:
+[paste the blog post / webinar transcript / case study / recording notes]
+
+Turn it into all of the following:
+1. LinkedIn post (under 200 words, punchy hook, no hashtag spam)
+2. Three tweet-length insights (under 280 characters each)
+3. Email newsletter intro (150 words, leads into a link to the original)
+4. 5 pull-quote candidates (short, standalone, shareable)
+5. One-paragraph summary for an internal Slack update
+
+Keep the core insight intact across all formats. Adjust the depth and tone for each channel.`,
+    outcome: '→ One piece of content, six formats',
+  },
+  {
+    id: 'p101-36',
+    title: 'Marketing — A/B headline and copy variants',
+    category: 'specialist',
+    role: 'marketing',
+    session: '101',
+    description: 'Generate distinct copy variants to test — not just synonyms, but genuinely different angles.',
+    prompt: `You are a conversion copywriter. Generate A/B test variants for the following copy:
+
+What we are testing: [headline / email subject / CTA button / ad copy / landing page hero]
+Current version: [paste existing copy]
+Goal: [what action we want — click / sign up / book a call / buy]
+Audience: [who sees this]
+
+Write 4 distinct variants. Each must take a meaningfully different angle:
+- Variant A: Benefit-led
+- Variant B: Problem/pain-led
+- Variant C: Social proof or credibility
+- Variant D: Curiosity or pattern interrupt
+
+For each: the copy itself + one sentence explaining the strategic logic behind it.
+No synonyms masquerading as variants.`,
+    outcome: '→ Four genuinely different angles to test',
+  },
+  {
+    id: 'p101-37',
+    title: 'Marketing — Campaign performance narrative',
+    category: 'analysis',
+    role: 'marketing',
+    session: '101',
+    description: 'Turn raw campaign data into a clear story for leadership — not a data dump.',
+    prompt: `You are a senior marketing analyst. Turn this campaign data into an executive-ready narrative.
+
+Campaign: [name and brief description]
+Period: [date range]
+Data:
+[paste your metrics — impressions, clicks, conversions, cost, revenue, etc.]
+
+Write:
+1. One-paragraph headline summary (what happened, in plain English)
+2. What worked and why (with specific numbers)
+3. What didn't work and the most likely reason
+4. One decision this data should drive
+5. What to watch in the next cycle
+
+Do not list every metric. Tell the story the data is telling. Cut anything that doesn't change a decision.`,
+    outcome: '→ Insight, not a data dump',
+  },
+  {
+    id: 'p101-38',
+    title: 'Marketing — Press release / announcement',
+    category: 'communication',
+    role: 'marketing',
+    session: '101',
+    description: 'Draft a press release or internal announcement that leads with the news, not the backstory.',
+    prompt: `You are a PR writer. Draft a press release for the following announcement:
+
+What is being announced: [describe clearly]
+Why it matters (to the audience, not to us): [key benefit or implication]
+Quote from leadership: [optional — or ask Claude to draft one]
+Key facts: [stats, dates, features, names — whatever is factual and relevant]
+Audience: [press / customers / partners / internal team]
+
+Format:
+- Headline (newsy, not clever — lead with the news)
+- Subhead (one line of context)
+- Dateline + opening paragraph (who, what, where, when, why — in the first 50 words)
+- Two supporting paragraphs
+- Leadership quote
+- Boilerplate about [company]
+- Contact details: [your details]
+
+AP style. Active voice. No adjectives that aren't backed by a fact.`,
+    outcome: '→ Press-ready announcement',
+  },
 ]
 
 // ─── Best Practices ───────────────────────────────────────────────────────────
